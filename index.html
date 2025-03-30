@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .dua {
+            font-size: 2.5rem;
+            direction: rtl;
+        }
+
+        .moon {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: transparent;
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            transform: rotate(-30deg);
+            opacity: 0.8;
+            box-shadow: -30px 0 0 #fff;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite;
+            box-shadow: 0 0 5px white;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        .lamps {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .lamp {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: radial-gradient(circle, #ffd700 20%, #ff8c00 70%, transparent);
+            border-radius: 50% 50% 0 0;
+            top: 20px;
+            box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.6);
+        }
+
+        .lamp::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: #fff;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.5;
+        }
+
+        .lamp:nth-child(1) { left: 10%; animation: sway 3s infinite ease-in-out; }
+        .lamp:nth-child(2) { left: 30%; animation: sway 3.5s infinite ease-in-out; }
+        .lamp:nth-child(3) { left: 50%; animation: sway 3.2s infinite ease-in-out; }
+        .lamp:nth-child(4) { left: 70%; animation: sway 3.7s infinite ease-in-out; }
+        .lamp:nth-child(5) { left: 90%; animation: sway 3.4s infinite ease-in-out; }
+
+        @keyframes sway {
+            0% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            100% { transform: translateX(-5px); }
+        }
+
+        .signature {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+            font-size: 1rem;
+            opacity: 0.7;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .dua { font-size: 1.8rem; }
+            .moon { width: 100px; height: 100px; box-shadow: -20px 0 0 #fff; }
+            .lamp { width: 15px; height: 25px; }
+            .lamp::before { height: 15px; }
+            .signature { font-size: 0.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .dua { font-size: 1.5rem; }
+            .moon { width: 80px; height: 80px; box-shadow: -15px 0 0 #fff; }
+            .lamp { width: 12px; height: 20px; }
+            .lamp::before { height: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="moon"></div>
+    <div class="stars" id="stars"></div>
+    <div class="lamps">
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+    </div>
+    <div class="content">
+        <h1>Eid Mubarak</h1>
+        <p class="dua">Taqabbal Allahu Minna Wa Minkum</p>
+    </div>
+    <div class="signature">Md Anees Khan</div>
+
+    <script>
+        // Create twinkling stars
+        const starsContainer = document.getElementById('stars');
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            star.style.animationDelay = `${Math.random() * 1.5}s`;
+            
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
